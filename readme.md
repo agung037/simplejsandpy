@@ -1,0 +1,1 @@
+sebuah perbandingan javascript vs python dalam menyelesaikan masalah yang sama
