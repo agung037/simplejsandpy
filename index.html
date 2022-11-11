@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDFM</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid;
+        }
+
+        table {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>Soal 1</h2>
+        <input type="text" id="kota" placeholder="masukan nama kota">
+        <button id="goKota">lihat hasil</button>
+        <div id="hasilKota">
+
+        </div>
+    </div>
+    <hr>
+
+    <div>
+        <h2>Soal 2</h2>
+        <input type="text" id="tinggi" placeholder="masukan ketinggian">
+        <button id="goTinggi">lihat hasil</button>
+        <div id="hasilTinggi"></div>
+    </div>
+    <hr>
+
+    <div>
+        <h2>Soal 3</h2>
+        <input type="text" id="suhu" placeholder="masukan suhu maks">
+        <button id="goSuhu">lihat hasil</button>
+
+        <div>
+            <table id="myTable">
+                <thead>
+                    <tr>
+                        <th>Celcius</th>
+                        <th>Fahrenheit</th>
+                        <th>Reamur</th>
+                    </tr>
+                </thead>
+                <tbody id="hasilSuhu">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let kota = document.getElementById("kota")
+        let goKota = document.getElementById('goKota')
+        let tinggi = document.getElementById('tinggi')
+        let goTinggi = document.getElementById('goTinggi')
+        let suhu = document.getElementById('suhu')
+        let goSuhu = document.getElementById('goSuhu')
+
+
+        const tulisKota = (s) => {
+            let hasilKota = document.getElementById("hasilKota")
+            hasilKota.innerHTML = ""
+
+            for (let i = 0; i < s.length; i++) {
+                hasilKota.innerHTML += `<br>${s.substr(i, s.length)}`
+            }
+        }
+
+        const tulisBintang = (n) => {
+            let hasilTinggi = document.getElementById("hasilTinggi")
+            hasilTinggi.innerHTML = ""
+
+            for (let i = n; i >= 0; i--) {
+                hasilTinggi.innerHTML += `<br> ${"*".repeat(i)}`
+            }
+        }
+
+        const tulisSuhu = (n) => {
+            let hasilSuhu = document.getElementById("hasilSuhu")
+
+            var table = document.getElementById("myTable");
+
+
+            for (let i = 10; i <= n; i += 10) {
+                var row = table.insertRow();
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                cell1.innerHTML = i;
+                cell2.innerHTML = i * 1.8 + 32;
+                cell3.innerHTML = i * 0.8;
+            }
+        }
+
+        goKota.addEventListener('click', () => {
+            tulisKota(kota.value)
+        })
+
+        goTinggi.addEventListener('click', () => {
+            tulisBintang(tinggi.value)
+        })
+
+        goSuhu.addEventListener('click', () => {
+            console.log("go suhu");
+
+            tulisSuhu(suhu.value)
+        })
+    </script>
+</body>
+
+</html>
